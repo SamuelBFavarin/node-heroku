@@ -14,19 +14,25 @@
 
   <body>
     <div id="app">
-      <div>
-          <h3>To Do List: </h3>
+      <div class="container">
+          <br>
+          <h2>ToDo List</h2>
+          <p>Samuel Brati Favarin </p>
+          <p style="margin-top: -20px">Using Node + Express + Vue + Heroku: </p>
 
-          <div class="form-group">
-              <label>Nova tarefa</label>
-              <input v-model="title" type="textg" class="form-control"  placeholder="Digite aqui sua tarefa">
-          </div>
-          <button @click="app.create()">Adicionar</button>
+          <hr>
+            <div class="row" style="padding: 15px">
+              <input v-model="title" class="form-control col-md-11" type="text" placeholder="Digite aqui sua tarefa">
+              <button class="form-control col-md-1 btn btn-primary" @click="app.create()">Adicionar</button>
+            </div>
+
 
           <ul v-for="task in list" class="list-group">
             <li v-if="task.deleted === 0" class="list-group-item">
-              <p>{{task.title}}</p>
-              <button @click="app.delete(task.id)">delete</button>
+              <div class="row">
+                <p class="col-md-11">{{task.title}}</p>
+                <button class="col-md-1 btn btn-danger" @click="app.delete(task.id)">Remover</button>
+              </div>
             </li>
           </ul>
       </div>

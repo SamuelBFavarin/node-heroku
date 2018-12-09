@@ -22,16 +22,16 @@
 
           <hr>
             <div class="row" style="padding: 15px">
-              <input v-model="title" class="form-control col-md-11" type="text" placeholder="Digite aqui sua tarefa">
-              <button class="form-control col-md-1 btn btn-primary" @click="app.create()">Adicionar</button>
+              <input v-model="title" class="form-control col-xs-11" type="text" placeholder="Digite aqui sua tarefa">
+              <button class="form-control col-xs-1 btn btn-primary" @click="app.create()">Adicionar</button>
             </div>
 
 
           <ul v-for="task in list" class="list-group">
             <li v-if="task.deleted === 0" class="list-group-item">
               <div class="row">
-                <p class="col-md-11">{{task.title}}</p>
-                <button class="col-md-1 btn btn-danger" @click="app.delete(task.id)">Remover</button>
+                <p class="col-xs-11">{{task.title}}</p>
+                <button class="col-xs-1 btn btn-danger" @click="app.delete(task.id)">Remover</button>
               </div>
             </li>
           </ul>

@@ -1,7 +1,7 @@
 {
-    "name": "node-docker",
+    "name": "node-heroku",
     "version": "1.0.0",
-    "description": "Node.js on Docker",
+    "description": "",
     "author": "samuelbfavarin@hotmail.com",
     "main": "server.js",
     "scripts": {
@@ -11,3 +11,5 @@
         "express": "^4.13.3"
     }
 }
+
+

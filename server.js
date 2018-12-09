@@ -1,19 +1,12 @@
 
-'use strict';
-const express = require('express');
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 3000;
 
-// Constants
-const PORT = process.env.PORT || 3000;
-const HOST = '127.0.0.1';
-
-
-// App
-const app = express();
-app.get('/', (req, res) => {
-    res.send('Hello docker!\n');
+app.get("/", function(req,res){
+    res.send("Samuel On Heroku")
 });
 
+app.listen(port)
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
 

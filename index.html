@@ -16,7 +16,19 @@
     <div id="app">
       <div>
           <h3>To Do List: </h3>
-          {{list.todo}}
+
+          <div class="form-group">
+              <label>Nova tarefa</label>
+              <input v-model="title" type="textg" class="form-control"  placeholder="Digite aqui sua tarefa">
+          </div>
+          <button @click="app.create()">Adicionar</button>
+
+          <ul v-for="task in list" class="list-group">
+            <li v-if="task.deleted === 0" class="list-group-item">
+              <p>{{task.title}}</p>
+              <button @click="app.delete(task.id)">delete</button>
+            </li>
+          </ul>
       </div>
     </div>
 
@@ -34,7 +46,8 @@
       var app = new Vue({
         el: '#app',
         data: {
-          list: null
+          list: null,
+          title: null
         },
 
         mounted (){
@@ -42,14 +55,38 @@
         },
 
         methods: {
-           getList: function () {
+          delete(id){
+            this.$http.get('/remove', {params: {
+              'id': id
+            }
+            }).then(response => {
+              this.list = JSON.parse(JSON.stringify(response.body))
+            }, response => {
+            // error callback
+            });
+          },
+
+          create(){
+            var _this = this
+            this.$http.get('/add', {params: {
+              'title': _this.title
+            }
+            }).then(response => {
+              this.list = JSON.parse(JSON.stringify(response.body))
+              _this.title = null
+            }, response => {
+              _this.title = null
+            });
+          },
+
+          getList() {
             this.$http.get('/list').then(response => {
               this.list = JSON.parse(JSON.stringify(response.body))
-              console.log(this.list)
             }, response => {
             // error callback
             });
           }
+
         }
       })
     </script>
